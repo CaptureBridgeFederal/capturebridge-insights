@@ -1,0 +1,50 @@
+media:
+  input: public/assets/img/uploads
+  output: /assets/img/uploads
+  extensions: [png, jpg, jpeg, webp, gif, svg]
+
+content:
+  - name: insights
+    label: Insights Posts
+    type: collection
+    path: src/content/insights
+    filename: '{fields.title}.md'
+    view:
+      fields: [title, pubDate, draft]
+    fields:
+      - name: title
+        label: Title
+        type: string
+      - name: description
+        label: Meta description / direct answer
+        type: text
+      - name: author
+        label: Author
+        type: string
+        default: Michael Downey
+      - name: role
+        label: Author role
+        type: string
+        default: Principal, Federal Business Development & Capture
+      - name: pubDate
+        label: Publish date
+        type: date
+      - name: updatedDate
+        label: Updated date
+        type: date
+        required: false
+      - name: heroImage
+        label: Hero image
+        type: image
+        required: false
+      - name: tags
+        label: Tags
+        type: string
+        list: true
+      - name: draft
+        label: Draft
+        type: boolean
+        default: false
+      - name: body
+        label: Body
+        type: rich-text
