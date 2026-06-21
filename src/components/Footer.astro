@@ -3,18 +3,57 @@ const main = 'https://capturebridgefederal.com';
 const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
-  <div class="bar">
-    <div>
-      <strong style="color:#fff;">CaptureBridge Federal Advisors</strong><br/>
-      Federal business development and capture advisory.
-    </div>
-    <div>
-      <a href={main}>capturebridgefederal.com</a> &nbsp;·&nbsp;
-      <a href="https://www.linkedin.com/company/capturebridge-federal-advisors/">LinkedIn</a> &nbsp;·&nbsp;
-      <a href="/rss.xml">RSS</a>
+  <div class="footer-top">
+    <div class="cols3">
+      <div>
+        <h4>Locations</h4>
+        <p><strong>Washington, DC</strong><br /><span>Capital region office</span></p>
+        <p><strong>Honolulu, HI</strong><br /><span>Indo Pacific presence</span></p>
+      </div>
+      <div>
+        <h4>Hours</h4>
+        <p><strong>Monday to Friday</strong><br /><span>8:00 am to 6:00 pm EST</span></p>
+        <p><strong>By appointment</strong><br /><span>Evenings and Saturdays</span></p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p><a href="mailto:sales@capturebridgefederal.com">sales@capturebridgefederal.com</a><br /><span>Sales and inquiries</span></p>
+      </div>
     </div>
   </div>
-  <div class="bar" style="padding-top:0;color:#9fb0cf;font-size:13px;">
-    © {year} CaptureBridge Federal Advisors, LLC (formerly SJManuel & Associates). General information, not legal advice.
+
+  <div class="footer-main">
+    <div class="fcol fbrand">
+      <img src="/assets/img/logo-white.png" alt="CaptureBridge Federal Advisors" />
+      <p>Federal business development and capture advisory for professional services and technology firms pursuing and scaling in the U.S. Federal market.</p>
+    </div>
+    <div class="fcol">
+      <h4>Services</h4>
+      <a href={`${main}/services#s01`}>Market Entry Strategy</a>
+      <a href={`${main}/services#s02`}>BD Operations</a>
+      <a href={`${main}/services#s03`}>Pipeline Development</a>
+      <a href={`${main}/services#s04`}>Capture Advisory</a>
+      <a href={`${main}/services#s05`}>Pursuit Support</a>
+      <a href={`${main}/services#s06`}>Teaming and Market Access</a>
+      <a href={`${main}/services#s07`}>Proposal &amp; Response Support</a>
+      <a href={`${main}/services#s08`}>Compliance &amp; Roadmaps</a>
+    </div>
+    <div class="fcol">
+      <h4>Firm</h4>
+      <a href={`${main}/services#approach`}>Approach</a>
+      <a href={`${main}/capture-playbook-landing`}>Capture Playbook</a>
+      <a href={`${main}/federal-growth-lifecycle-faq`}>Federal Growth FAQ</a>
+      <a href="/">Insights</a>
+      <a href={`${main}/contact`}>Contact</a>
+    </div>
+    <div class="fcol">
+      <h4>Reach Us</h4>
+      <a href="mailto:sales@capturebridgefederal.com">sales@capturebridgefederal.com</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>&copy; {year} CaptureBridge Federal Advisors, LLC (formerly SJManuel &amp; Associates) &middot; All rights reserved</span>
+    <span class="tagline">THE BRIDGE BETWEEN COMMERCIAL STRENGTH AND FEDERAL REVENUE</span>
   </div>
 </footer>

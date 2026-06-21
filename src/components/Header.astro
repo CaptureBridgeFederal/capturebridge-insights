@@ -3,15 +3,17 @@ const main = 'https://capturebridgefederal.com';
 ---
 <header class="site-header">
   <div class="bar">
-    <a class="brand" href={main}>
-      <span style="font-size:22px;font-weight:800;letter-spacing:1px;"><span class="cb-c">C</span><span class="cb-b">B</span></span>
-      <span>CaptureBridge<small>FEDERAL ADVISORS</small></span>
+    <a class="brand" href={main} aria-label="CaptureBridge Federal Advisors home">
+      <img src="/assets/img/logo.png" alt="CaptureBridge Federal Advisors" />
     </a>
     <nav class="nav">
       <a href={main}>Home</a>
       <a href={`${main}/services`}>Services</a>
+      <a href={`${main}/services#approach`}>Approach</a>
+      <a href={`${main}/capture-playbook-landing`}>Capture Playbook</a>
       <a href="/">Insights</a>
       <a href={`${main}/contact`}>Contact</a>
+      <a class="btn btn-sm" href={`${main}/contact`}>Book a discovery call &rarr;</a>
     </nav>
   </div>
 </header>
