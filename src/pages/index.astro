@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+const posts = (await getCollection('insights', ({ data }) => !data.draft))
+  .sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf());
+const fmt = (dt) => new Date(dt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+<BaseLayout
+  title="Insights | CaptureBridge Federal Advisors"
+  description="Answer-first briefs on Federal capture, pipeline development, teaming, proposals, and compliance from CaptureBridge Federal Advisors.">
+  <div class="page-head">
+    <div class="container">
+      <p class="eyebrow">Insights</p>
+      <h1>Federal growth, in plain language.</h1>
+      <p class="lede">Short, answer-first briefs on capture, pipeline, teaming, proposals, and Federal compliance.</p>
+    </div>
+  </div>
+  <section class="post-list">
+    <div class="container">
+      {posts.length === 0 && <p>New briefs are on the way.</p>}
+      {posts.map((p) => (
+        <a class="card" href={`/${p.id}/`}>
+          <p class="post-meta">{fmt(p.data.pubDate)}</p>
+          <h2>{p.data.title}</h2>
+          <p>{p.data.description}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

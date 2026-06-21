@@ -1,0 +1,35 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Where uploaded images are stored in the repo, and how they are referenced on the site.
+media_folder: "public/assets/img/uploads"
+public_folder: "/assets/img/uploads"
+
+publish_mode: editorial_workflow
+
+site_url: https://insights.capturebridgefederal.com
+display_url: https://insights.capturebridgefederal.com
+
+collections:
+  - name: "insights"
+    label: "Insights Posts"
+    label_singular: "Insights Post"
+    folder: "src/content/insights"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    summary: "{{title}}  —  {{pubDate}}"
+    sortable_fields: ["pubDate", "title"]
+    fields:
+      - { label: "Title", name: "title", widget: "string", hint: "Phrase it like a question a buyer would ask an AI tool when possible." }
+      - { label: "Meta description / direct answer", name: "description", widget: "text", hint: "1-2 sentences. Used for SEO and as the answer AI engines may quote." }
+      - { label: "Author", name: "author", widget: "string", default: "Michael Downey" }
+      - { label: "Author role", name: "role", widget: "string", default: "Principal, Federal Business Development & Capture" }
+      - { label: "Publish date", name: "pubDate", widget: "datetime" }
+      - { label: "Updated date", name: "updatedDate", widget: "datetime", required: false, hint: "Set this when you refresh the post. Keeps content fresh for AI citation." }
+      - { label: "Hero image", name: "heroImage", widget: "image", required: false }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "Draft", name: "draft", widget: "boolean", default: false }
+      - { label: "Body", name: "body", widget: "markdown" }

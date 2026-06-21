@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+
+Sitemap: https://insights.capturebridgefederal.com/sitemap-index.xml

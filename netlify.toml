@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Decap CMS admin is served statically from /admin (public/admin).
+# Netlify Identity + Git Gateway must be enabled on this site (see README).

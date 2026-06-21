@@ -1,0 +1,59 @@
+---
+import BaseLayout from './BaseLayout.astro';
+const { post } = Astro.props;
+const d = post.data;
+const fmt = (dt) => new Date(dt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+const canonical = new URL(`/${post.id}/`, Astro.site).toString();
+const article = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: d.title,
+  description: d.description,
+  datePublished: new Date(d.pubDate).toISOString(),
+  dateModified: new Date(d.updatedDate || d.pubDate).toISOString(),
+  author: { '@type': 'Person', name: d.author, jobTitle: d.role,
+    sameAs: 'https://www.linkedin.com/in/michael-downey-6a64a921/' },
+  publisher: { '@type': 'Organization', name: 'CaptureBridge Federal Advisors',
+    url: 'https://capturebridgefederal.com' },
+  mainEntityOfPage: canonical
+};
+---
+<BaseLayout title={`${d.title} | CaptureBridge Insights`} description={d.description}
+  image={d.heroImage} type="article" publishedDate={d.pubDate} modifiedDate={d.updatedDate} author={d.author}>
+  <div class="page-head">
+    <div class="container">
+      <p class="eyebrow">Insights</p>
+      <h1>{d.title}</h1>
+      <p class="post-meta">
+        Published {fmt(d.pubDate)}
+        {d.updatedDate && <span class="updated"> · Updated {fmt(d.updatedDate)}</span>}
+      </p>
+    </div>
+  </div>
+  <article class="post">
+    <div class="container">
+      <div class="byline">
+        <div>
+          <div class="who">{d.author}</div>
+          <div class="role">{d.role}</div>
+        </div>
+      </div>
+      <div class="post-body">
+        <slot />
+      </div>
+      {d.tags.length > 0 && (
+        <div class="tags">
+          {d.tags.map((t) => <span class="tag">{t}</span>)}
+        </div>
+      )}
+    </div>
+  </article>
+  <div class="cta-band">
+    <div class="container">
+      <h2>Federal is a growth channel. Treat it like one.</h2>
+      <p>Book a 30 minute discovery call and leave with three high leverage moves.</p>
+      <p><a class="btn" href="https://capturebridgefederal.com/contact">Book a discovery call →</a></p>
+    </div>
+  </div>
+  <script type="application/ld+json" set:html={JSON.stringify(article)} />
+</BaseLayout>

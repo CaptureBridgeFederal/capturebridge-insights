@@ -1,0 +1,35 @@
+---
+import '../styles/global.css';
+const { title, description, image, type = 'website', publishedDate, modifiedDate, author } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = image ? new URL(image, Astro.site) : new URL('/assets/img/og-default.png', Astro.site);
+const org = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'CaptureBridge Federal Advisors',
+  url: 'https://capturebridgefederal.com',
+  sameAs: ['https://www.linkedin.com/company/capturebridge-federal-advisors/'],
+  description: 'Federal business development and capture advisory for contractors in IT, cybersecurity, AI, professional services, and architecture and engineering markets.'
+};
+---
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="alternate" type="application/rss+xml" title="CaptureBridge Insights" href={new URL('/rss.xml', Astro.site)} />
+<meta property="og:type" content={type} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:site_name" content="CaptureBridge Federal Advisors" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<script type="application/ld+json" set:html={JSON.stringify(org)} />
